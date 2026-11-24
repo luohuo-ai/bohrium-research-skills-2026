@@ -7,6 +7,8 @@ import shutil
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parent
+PUBLIC_REPOSITORY='https://github.com/luohuo-ai/bohrium-research-skills-2026'
+PUBLIC_LINK_SKILLS={'aligned-paper-translation','evidence-notes','traceable-pdf-structure','sourced-nanopublications','provenance-literature-graph'}
 
 TASKS=[
 dict(key='academic-polish',id='product-arena-02-7051d92d',title='学术语言润色',
@@ -234,6 +236,8 @@ The first command produces actual source IDs, paragraphs, hashes and line locato
 For a full invocation, ask an Agent to use this SKILL.md with a real, authorized input, the actual task and output contract, and an output directory; follow references/workflow.md to produce **{task['deliver']}** Do not copy result.example.json into a formal result. In evaluation the paths and fields come from the provided case instead.
 '''
         (directory/'examples/README.md').write_text(example,encoding='utf-8')
+        if name in PUBLIC_LINK_SKILLS:
+            (directory/'GITHUB_URL.txt').write_text(f'{PUBLIC_REPOSITORY}/tree/main/skills/{name}\nSKILL.md\n',encoding='utf-8')
         files=[p for p in directory.rglob('*') if p.is_file()]
         total=sum(p.stat().st_size for p in files)
         assert len(files)<=50 and total<=2_000_000

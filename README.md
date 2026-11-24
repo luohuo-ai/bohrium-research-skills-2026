@@ -26,4 +26,4 @@ python -B -m unittest discover -s tests
 
 ## 发布范围
 
-本审阅包不包含凭据、账号配置、私人会话日志、原始材料或正式测试答案。GitHub 公开链接尚未填写或发布；待用户明确授权后再执行。
+本审阅包不包含凭据、账号配置、私人会话日志、原始材料或正式测试答案。用户已授权公开发布：https://github.com/luohuo-ai/bohrium-research-skills-2026。五道要求公开链接的阅读题包含直达各自作品目录的 GITHUB_URL.txt；附加分由正式评审判定。

@@ -1,0 +1,2 @@
+https://github.com/luohuo-ai/bohrium-research-skills-2026/tree/main/skills/provenance-literature-graph
+SKILL.md
