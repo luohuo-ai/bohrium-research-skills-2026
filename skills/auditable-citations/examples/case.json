@@ -1,0 +1,43 @@
+{
+  "case_id": "development-demo-auditable-citations",
+  "notice": "SYNTHETIC INTERFACE EXAMPLE ONLY; not a platform case or result",
+  "task": "Demonstrate the interface for 参考文献与引用管理; inspect the source and report limitations.",
+  "input_files": [
+    "source.md"
+  ],
+  "output_contract": {
+    "type": "object",
+    "required": [
+      "case_id",
+      "status",
+      "main_result",
+      "sources",
+      "uncertainty",
+      "changes"
+    ],
+    "properties": {
+      "case_id": {
+        "type": "string"
+      },
+      "status": {
+        "enum": [
+          "success",
+          "partial",
+          "unable_to_determine"
+        ]
+      },
+      "main_result": {
+        "type": "object"
+      },
+      "sources": {
+        "type": "array"
+      },
+      "uncertainty": {
+        "type": "array"
+      },
+      "changes": {
+        "type": "array"
+      }
+    }
+  }
+}

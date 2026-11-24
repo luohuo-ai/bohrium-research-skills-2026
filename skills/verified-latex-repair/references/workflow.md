@@ -1,0 +1,13 @@
+# LaTeX 写作与编译 workflow
+
+1. Inspect the actual main file, included files, template/class, bibliography, figures, language/fonts and requested changes. Copy the provided project to a clean /app/work location before editing, preserving original files and licenses. Discover the actual installed compiler and renderer and respect the case's required engine/template.
+2. Save the original compiler failure/log when possible. Use tex-audit as a cheap static precheck; resolve paths relative to the correct project root. Macro-generated labels, manual thebibliography and generated files need actual TeX inspection rather than blind reliance on regex results.
+3. Classify root causes: missing source/include/class/package/font, syntax/environment errors, incompatible package order, undefined labels/citations, or layout overflow. Fix a small causally related set, retain an exact diff/reason, and compile again. Do not delete a figure, equation, citation or scientific paragraph just to obtain exit code 0.
+4. Preserve mathematical meaning, numeric table entries, labels and citation keys during formatting. For wide tables or complex equations use suitable structure rather than shrinking until unreadable. Follow explicit template constraints over personal style preferences.
+5. Run a real compiler in a fresh build directory with shell escape disabled unless the actual authorized case requires otherwise. document_tools tex-build records commands, exit codes and per-pass logs and does not reuse an old PDF. Prefer a full dependency-aware actual build workflow for bibliography convergence; the direct-engine helper uses two passes and may leave bibliography work for explicit follow-up.
+6. Check warnings, missing glyphs, cross-references/citations and overfull content; run any additional bibtex/biber/compile passes actually required by the project and record them. Render the actual new PDF and inspect every relevant page. Compiler exit success does not establish layout or scientific fidelity.
+7. Deliver editable sources and all required assets, actual output PDF/previews, compiler/font/template versions and commands. If a required tool or source is absent, report missing_tool/partial status and preserve repaired sources plus actual error logs; never attach an old PDF as a successful new build.
+
+## Practical checks and limits
+
+Commands: python scripts/document_tools.py tex-audit --project /app/work/project --out /app/work/tex-audit.json; python scripts/document_tools.py tex-build --project /app/work/project --main main.tex --output-dir /app/output/build --engine xelatex --timeout 90 --out /app/work/build.json. The helper supports latexmk/pdflatex/xelatex/lualatex when actually found. Never run it with an unrelated executable.

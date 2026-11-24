@@ -1,0 +1,13 @@
+# 文献文档解析 workflow
+
+1. Inspect actual files and requested parse targets. Check encryption, page count, usable text layer, language, columns and scanned/image regions on representative rendered pages. Select the fastest actually available parser for the case; do not assume filenames reveal content.
+2. Run document_tools pdf for a geometry-aware initial extraction when pdfplumber is available; it falls back to pypdf with explicit geometry limitations. Retain raw text segments, page/bbox coordinates, table candidates and ordering method. These helpers are a starting point, not a complete layout/OCR system.
+3. Verify reading order against rendered pages. For two-column pages, check full-width headings/captions interrupt column bands correctly; for complex or three-column layouts derive order from actual coordinates and rendered evidence. Classify repeated headers/footers using their position and recurrence, but retain a removal ledger and raw extraction instead of deleting similar scientific sentences.
+4. Inspect actual table cells, merged headers, row/column spans, units, footnotes and cross-page continuations. Reconstruct HTML/JSON with explicit span metadata if needed. Keep original table bbox/page anchors and raw cells. A detected table is not proof of correct cell structure; image tables need actual OCR/visual verification.
+5. Preserve formula numbers, Greek letters, superscripts/subscripts and original symbols. If text extraction loses a mathematical structure, retain a real crop/rendered region and mark the transcription uncertainty; do not invent an equivalent-looking expression or claim scientific interpretation is required.
+6. For scanned/unusable text, discover an installed OCR engine from actual resources. Render the actual affected page with the available PDF renderer, run OCR with the right available language pack, retain command/exit code/output, and compare suspect symbols/numbers with the page. If no engine exists, return honest partial output and exact affected pages.
+7. Build section/caption/equation/reference structure according to the case contract. Check coverage of every requested page and element, numeric fidelity, ordering, table continuity and locators. Deliver raw plus cleaned structure, removal/correction records and true previews where needed. Never label heuristic extraction alone as fully verified.
+
+## Practical checks and limits
+
+Commands: python scripts/document_tools.py pdf --input ACTUAL.pdf --out /app/work/pdf-layout.json; optionally --max-pages N for an explicitly scoped inspection, with later pages clearly listed as not extracted. OCR is not implemented in this helper. For source-hash anchored evidence, research_tools extract wraps these segments with content-based source IDs.
