@@ -31,7 +31,7 @@ def export(source, target, report, start_marker='开始吧，记住我们的目�
         reason=None
         if row.get('type')!='response_item':reason='non-conversation metadata or duplicate events'
         elif typ=='message' and payload.get('role') not in {'user','assistant','tool'}:reason='private system/developer context'
-        elif typ=='reasoning':reason='private reasoning event'
+        elif typ=='reasoning' or (typ=='message' and payload.get('role')=='assistant' and payload.get('channel')=='analysis'):reason='private reasoning event'
         elif typ not in {'message','function_call','function_call_output','custom_tool_call','custom_tool_call_output'}:reason='non-public conversation event'
         elif payload.get('call_id') in echo_ids:reason='recursive dry-run trace echo and paired call; source report stays local'
         elif typ in {'function_call','custom_tool_call'} and payload.get('call_id') not in completed:reason='call not yet completed at export snapshot'
@@ -42,6 +42,8 @@ def export(source, target, report, start_marker='开始吧，记住我们的目�
         redactions+=count
         cleaned,count=re.subn(r'(Bearer\s+)[A-Za-z0-9._-]{20,}',r'\1<API_TOKEN_REDACTED>',cleaned,flags=re.I)
         redactions+=count
+        for pattern in (r'sk-[A-Za-z0-9_-]{20,}',r'(?:gh[pousr]_|github_pat_)[A-Za-z0-9_]{20,}'):
+            cleaned,count=re.subn(pattern,'<API_TOKEN_REDACTED>',cleaned);redactions+=count
         kept.append(cleaned)
         records.append({'original_line':n,'original_sha256':hashlib.sha256(line.encode()).hexdigest(),
                         'export_sha256':hashlib.sha256(cleaned.encode()).hexdigest(),'type':typ,'call_id':payload.get('call_id')})

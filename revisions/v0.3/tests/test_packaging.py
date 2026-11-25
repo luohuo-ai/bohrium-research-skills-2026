@@ -45,4 +45,17 @@ class TraceExportTests(unittest.TestCase):
             kept=[json.loads(x) for x in (p/'out').read_text(encoding='utf-8').splitlines()]
             self.assertEqual(kept,records[2:]);self.assertEqual(result['start_line'],3)
 
+
+    def test_analysis_messages_and_other_api_tokens_are_filtered(self):
+        records=[{'type':'response_item','payload':{'type':'message','role':'user','content':[{'text':'开始吧，记住我们的目标是拿高分'}]}},
+                 {'type':'response_item','payload':{'type':'message','role':'assistant','channel':'analysis','content':[{'text':'SYNTHETIC PRIVATE ANALYSIS'}]}},
+                 {'type':'response_item','payload':{'type':'message','role':'assistant','channel':'commentary','content':[{'text':'synthetic key: '+'sk-'+'a'*32}]}}]
+        with tempfile.TemporaryDirectory(dir=TMP) as tmp:
+            p=Path(tmp);(p/'source').write_text('\n'.join(json.dumps(x,ensure_ascii=False) for x in records)+'\n',encoding='utf-8')
+            summary=exporter.export(p/'source',p/'out',p/'audit')
+            data=(p/'out').read_text(encoding='utf-8')
+            self.assertNotIn('SYNTHETIC PRIVATE ANALYSIS',data)
+            self.assertNotIn('sk-'+'a'*32,data)
+            self.assertIn('API_TOKEN_REDACTED',data);self.assertEqual(summary['exported_events'],2)
+
 if __name__=='__main__':unittest.main()
