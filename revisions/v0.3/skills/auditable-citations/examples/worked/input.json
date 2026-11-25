@@ -1,0 +1,32 @@
+{
+  "source": "All identifiers and references below are invented for development, not real publications. r1 and r2 have identical identity fields. r3 intentionally conflicts.\n\n[\n  {\n    \"id\": \"r1\",\n    \"doi\": \"10.99999/synthetic.demo.001\",\n    \"title\": \"Invented study of A\",\n    \"year\": 2026,\n    \"authors\": [\n      \"Synthetic Author\"\n    ]\n  },\n  {\n    \"id\": \"r2\",\n    \"doi\": \"https://doi.org/10.99999/synthetic.demo.001\",\n    \"title\": \"Invented study of A\",\n    \"year\": 2026,\n    \"authors\": [\n      \"Synthetic Author\"\n    ]\n  },\n  {\n    \"id\": \"r3\",\n    \"doi\": \"10.99999/synthetic.demo.001\",\n    \"title\": \"Conflicting invented record\",\n    \"year\": 2025,\n    \"authors\": [\n      \"Another Synthetic Author\"\n    ]\n  }\n]",
+  "records": [
+    {
+      "id": "r1",
+      "doi": "10.99999/synthetic.demo.001",
+      "title": "Invented study of A",
+      "year": 2026,
+      "authors": [
+        "Synthetic Author"
+      ]
+    },
+    {
+      "id": "r2",
+      "doi": "https://doi.org/10.99999/synthetic.demo.001",
+      "title": "Invented study of A",
+      "year": 2026,
+      "authors": [
+        "Synthetic Author"
+      ]
+    },
+    {
+      "id": "r3",
+      "doi": "10.99999/synthetic.demo.001",
+      "title": "Conflicting invented record",
+      "year": 2025,
+      "authors": [
+        "Another Synthetic Author"
+      ]
+    }
+  ]
+}

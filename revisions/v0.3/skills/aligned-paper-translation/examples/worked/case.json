@@ -1,0 +1,40 @@
+{
+  "case_id": "synthetic-worked-aligned-paper-translation",
+  "notice": "Synthetic developer micro-case only. Not an official case or benchmark.",
+  "task": "Complete requested translation, aligned original/translated segments, applied glossary, evidence locators and unresolved translation issues.",
+  "output_contract": {
+    "type": "object",
+    "required": [
+      "case_id",
+      "status",
+      "main_result",
+      "sources",
+      "uncertainty",
+      "changes"
+    ],
+    "properties": {
+      "case_id": {
+        "type": "string"
+      },
+      "status": {
+        "enum": [
+          "success",
+          "partial"
+        ]
+      },
+      "main_result": {
+        "type": "object"
+      },
+      "sources": {
+        "type": "array",
+        "minItems": 1
+      },
+      "uncertainty": {
+        "type": "array"
+      },
+      "changes": {
+        "type": "array"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "source": "Create and parse a synthetic two-column PDF. The developer-generated layout is not an official case. Check reading order and real page/block anchors only.",
+  "left": [
+    "LEFT A: 12 replicates",
+    "LEFT B: temperature 20 C",
+    "LEFT C: source is synthetic",
+    "LEFT D: end of left column"
+  ],
+  "right": [
+    "RIGHT A: yield 8.2 percent",
+    "RIGHT B: no causal claim",
+    "RIGHT C: no actual experiment",
+    "RIGHT D: end of right column"
+  ]
+}

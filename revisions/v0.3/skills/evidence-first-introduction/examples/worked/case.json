@@ -1,0 +1,40 @@
+{
+  "case_id": "synthetic-worked-evidence-first-introduction",
+  "notice": "Synthetic developer micro-case only. Not an official case or benchmark.",
+  "task": "Editable introduction/related work, a literature comparison matrix, claim–citation mapping, gap argument and contribution-to-evidence map.",
+  "output_contract": {
+    "type": "object",
+    "required": [
+      "case_id",
+      "status",
+      "main_result",
+      "sources",
+      "uncertainty",
+      "changes"
+    ],
+    "properties": {
+      "case_id": {
+        "type": "string"
+      },
+      "status": {
+        "enum": [
+          "success",
+          "partial"
+        ]
+      },
+      "main_result": {
+        "type": "object"
+      },
+      "sources": {
+        "type": "array",
+        "minItems": 1
+      },
+      "uncertainty": {
+        "type": "array"
+      },
+      "changes": {
+        "type": "array"
+      }
+    }
+  }
+}

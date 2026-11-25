@@ -1,0 +1,4 @@
+# Optional local worked-example dependencies; official resources manifest takes precedence.
+pdfplumber==0.11.11
+pypdf==7.1.1
+reportlab==5.1.1

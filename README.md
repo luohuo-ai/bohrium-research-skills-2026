@@ -27,3 +27,6 @@ python -B -m unittest discover -s tests
 ## 发布范围
 
 本审阅包不包含凭据、账号配置、私人会话日志、原始材料或正式测试答案。用户已授权公开发布：https://github.com/luohuo-ai/bohrium-research-skills-2026。五道要求公开链接的阅读题包含直达各自作品目录的 GITHUB_URL.txt；附加分由正式评审判定。
+## 改进候选版 v0.3
+
+[源码与可运行合成示例](revisions/v0.3/README.md)。旧版文件保留。补充说明：Skill Creator标准格式检查与Playground打包预检均不等同于正式固定案例验收；当前不宣称RuntimeError已修复。

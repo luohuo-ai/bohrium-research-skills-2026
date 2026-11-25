@@ -1,0 +1,15 @@
+{
+  "source": "Synthetic configuration and logs, not measured research.\n\nConfiguration: 80 records, 60 training and 20 testing; learning_rate=0.001, epochs=5, configuration seed=7.\n\nRun log: epochs=5, run log seed=11.\n\nNo validation split, accuracy, software version, hardware or repetition count is supplied.",
+  "config": {
+    "total": 80,
+    "train": 60,
+    "test": 20,
+    "learning_rate": 0.001,
+    "epochs": 5,
+    "seed": 7
+  },
+  "run_log": {
+    "epochs": 5,
+    "seed": 11
+  }
+}

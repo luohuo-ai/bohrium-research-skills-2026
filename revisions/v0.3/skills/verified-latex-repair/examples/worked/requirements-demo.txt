@@ -1,0 +1,2 @@
+# Optional local worked-example dependencies; official resources manifest takes precedence.
+
